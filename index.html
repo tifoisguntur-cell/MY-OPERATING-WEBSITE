@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+  
+	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Operating Department</title>
   <style>
@@ -11,67 +14,172 @@
       background-size: cover;
       margin: 0;
       text-align: center;
-      color: white;
     }
 
-    h1 {
-      font-size: 6vw;
-      margin: 20px 0;
-      text-shadow: 2px 2px 5px black;
-    }
-    h2 {
-      font-size: 4vw;
-      margin: 10px 0;
-      text-shadow: 1px 1px 3px black;
+    /* Headings */
+    .heading1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 65px;
+      font-weight: bold;
+      text-transform: none;
+text-shadow: 3px 3px 5px WHITE;
+
+      color: #002366;        /* Navy Blue */
+      margin: 10px 0 0px 0;
+      letter-spacing: 1px;
     }
 
-    /* Button container */
+    .heading2 {
+      font-family: 'Bookman Old Style', serif;
+      font-size: 115px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #FFD700;
+      -webkit-text-stroke: 2px black;
+text-shadow: 5px 5px 5px blue; 
+      letter-spacing: 2px;
+    
+    }
+
+    .heading3 {
+      font-family: 'Playfair Display', serif;   
+      font-size: 58px;
+      font-weight: bold;
+      text-transform: uppercase;
+
+text-shadow: 3px 3px 5px YELLOW;
+      color:WHITE ;/* #FFFFE0;  #17a2b8;*/
+      margin: 0 0 00px 0;
+    }
+
+    /* Passport container (photo + caption) */
+    .passport-container {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      text-align: center;
+    }
+
+    .passport {
+      width: 150px;
+      height: 170px;
+      border: 2px solid black;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .caption {
+      font-size: 18px;
+      font-weight: bold;
+      color: #002366; /* Navy Blue */
+      margin-top: 8px;
+
+    }
+
+    /* New logo/photo in top left */
+    .logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+
+    }
+
+    /* Button grid */
     .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px auto;
-      max-width: 95%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 15px;
+      row-gap: 30px;
+      justify-items: center;
+      margin: 120px auto 50px auto;
+      max-width:90%;
     }
 
-    /* Button style */
-    .button {
-      background-color: #007BFF;
+
+
+
+
+
+    button {
+      width: 200px;
+      height: 60px;
+      font-size: 20px;
+font-family: 'Playfair Display', serif;
+      font-weight: Bold;
       border: none;
-      color: white;
-      padding: 15px 25px;
-      font-size: 1.1em;
-      border-radius: 8px;
+      border: 2px solid black;
+      border-radius: 4px;
       cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s, background-color 0.3s;
-      flex: 1 1 220px; /* responsive width */
-      max-width: 250px;
+      color: BLACK;
+      transition: transform 0.5s;
     }
 
-    .button:hover {
-      background-color: #0056b3;
+    button:hover {
       transform: scale(1.05);
     }
 
-    img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 10px;
-      margin: 15px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    /* Different colors for buttons */
+    .btn1 { background: #66b2ff; }   /* Light Blue */
+.btn2 { background: #71d48b; }   /* Light Green */
+.btn3 { background: #ffe380; color: black; } /* Light Yellow */
+.btn4 { background: #f28b94; }   /* Light Red/Coral */
+.btn5 { background: #6ed6e0; }   /* Light Cyan */
+.btn6 { background: #b399e6; }   /* Light Purple */
+
+ /* Divider line */
+    .divider {
+      margin: 00px auto 10px auto;
+      width: 20%;
+      border-top: 2px solid black;
+    }
+ .scroller-wrap{
+      width: 100%;
+      overflow: hidden;
+     /* background: rgba(0,0,0,0.6);  change background if needed */
+      padding: 10px 0;
+      box-sizing: border-box;
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 8vw; }
-      h2 { font-size: 6vw; }
-      .button { font-size: 1em; padding: 12px 20px; }
+    /* The moving text */
+    .scroller {
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform;
+      /* animation: left-to-right <duration> linear infinite; */
+      animation: left-to-right 12s linear infinite;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 1.6rem;             /* adjust size */
+      font-weight: 600;
+      color: #fff;                   /* text color */
+      padding-left: 100%;            /* start off-screen to the right */
     }
+
+    /* Pause on hover (desktop) or touch-hold (mobile browsers that support it) */
+    .scroller-wrap:hover .scroller,
+    .scroller-wrap:active .scroller {
+      animation-play-state: paused;
+      cursor: pointer;
+    }
+
+    /* Keyframes — move from right to left */
+    @keyframes left-to-right {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Responsive tweak */
+    @media (max-width:600px){
+      .scroller { font-size: 1.1rem; animation-duration: 10s; }
+    }
+
+
   </style>
 </head>
 <body>
-
   <!-- Left corner image -->
   <img src="L2.jpeg" alt="Logo" class="logo">
 
@@ -142,12 +250,3 @@
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
